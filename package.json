@@ -1,9 +1,9 @@
 {
   "name": "nodeAPI",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/index"
+    "dev": "nodemon src/server"
   },
   "license": "MIT",
   "dependencies": {

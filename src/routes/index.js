@@ -3,14 +3,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('HOME');
+    res.send('HOME 2.0');
 });
 
 router.get('/url', (req, res)=>{
     res.json(req.url);
 });
 
-router.get('/posts', postController.index);
+router.get('/posts', postController.view);
 router.post('/posts/add', postController.addAction);
 
 router.get('/posts/:slug/edit', postController.edit);

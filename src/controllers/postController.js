@@ -2,7 +2,7 @@ const Post = require('../models/Post');
 const slug = require('slug');
 
 module.exports = {
-    async index(req, res) {
+    async view(req, res) {
         const posts = await Post.find();
         return res.json(posts);
     },
@@ -46,8 +46,6 @@ module.exports = {
             return res.json(post);
         } catch(error) {
             console.log('Erro ao editar: ' + error.message);
-            //TESTAR SE NO FRONT É REDIRECIONADO A PARTIR DA NOSSA ROTA AQUI
-            return res.redirect(`/posts/${req.params.slug}/edit`);
         }
     },
 
