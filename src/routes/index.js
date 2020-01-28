@@ -16,4 +16,6 @@ router.post('/posts/add', postController.addAction);
 router.get('/posts/:slug/edit', postController.edit);
 router.put('/posts/:slug/edit', postController.editAction);
 
+router.get('/posts/:slug/delete', postController.deleteAction);
+
 module.exports = router;

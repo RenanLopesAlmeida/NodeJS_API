@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const slug = require('slug');
 
 module.exports = {
     async index(req, res) {
@@ -29,5 +30,38 @@ module.exports = {
 
     async editAction(req, res){
         
+        req.body.slug = slug(req.body.title, { lower: true });
+        req.body.tags = req.body.tags.split(',').map(t=>t.trim());
+
+        try{
+            const post = await Post.findOneAndUpdate(
+                { slug: req.params.slug },
+                req.body,
+                {
+                    new: true,
+                    runValidators: true
+                }
+            );
+
+            return res.json(post);
+        } catch(error) {
+            console.log('Erro ao editar: ' + error.message);
+            //TESTAR SE NO FRONT É REDIRECIONADO A PARTIR DA NOSSA ROTA AQUI
+            return res.redirect(`/posts/${req.params.slug}/edit`);
+        }
+    },
+
+    async deleteAction(req, res) {
+
+        try {
+            const post = await Post.findOneAndDelete(
+                { "slug": req.params.slug },
+            );
+
+            res.json(post);
+        } catch(error) {
+            console.log('Erro ao deletar: ' + error.message);
+            
+        }
     }
 }

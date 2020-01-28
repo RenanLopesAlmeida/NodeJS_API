@@ -7,7 +7,8 @@ const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/blog',{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (error)=>{
