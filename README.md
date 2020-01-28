@@ -1,2 +1,2 @@
-#Creating an API with NodeJS with MongoDB
+#Creating an API with NodeJS and MongoDB
 
